@@ -147,8 +147,8 @@
                     android:layout_marginTop="30dp"/>
 
                 <TextView
-                    android:layout_width="41dp"
-                    android:layout_height="22dp"
+                    android:layout_width="118dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Add Savings"
                     android:textColor="#676867"

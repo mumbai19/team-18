@@ -93,6 +93,15 @@
     <string name="potato">Potato</string>
     <string name="grapes">Grapes</string>
     <string name="title_activity_add">AddActivity</string>
-
+    <string name="title_activity_add_attendance">AddAttendance</string>
+    <string name="welcome">Welcome to Quizbie!</string>
+    <string name="enter_credentials">Enter the credentials</string>
+    <string name="login_id">Login_ID</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="not_a_member_yet">Not a member yet?</string>
+    <string name="login">Login</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_add_savings">AddSavings</string>
 
 </resources>
