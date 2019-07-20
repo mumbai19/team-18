@@ -10,13 +10,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 public class Dashboard extends AppCompatActivity {
-    private CardView AddActivity;
+    private CardView AddActivity,AddAttendance,AddSavings;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
 AddActivity=findViewById(R.id.addActivity);
+AddAttendance=findViewById(R.id.addAttendance);
+AddSavings=findViewById(R.id.addSavings);
         AddActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,6 +28,17 @@ AddActivity=findViewById(R.id.addActivity);
 
             }
         });
+
+        AddAttendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Dashboard.this, AddAttendance.class);
+                startActivity(i);
+
+            }
+        });
+
+
 
 
         }

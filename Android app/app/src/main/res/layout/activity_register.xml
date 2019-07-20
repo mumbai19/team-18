@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".RegisterActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="-37dp"
         android:layout_marginLeft="-37dp"
-        android:layout_marginTop="69dp"
+        android:layout_marginTop="60dp"
         android:text="Welcome to TouchingLives"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,7 +38,7 @@
         android:layout_alignParentLeft="true" />
 
     <EditText
-        android:id="@+id/login_id"
+        android:id="@+id/register_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/password"
@@ -52,7 +52,7 @@
         android:layout_alignLeft="@+id/password" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/password1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -68,21 +68,21 @@
         android:layout_marginLeft="82dp" />
 
     <Button
-        android:id="@+id/button_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_register"
+        android:layout_width="69dp"
+        android:layout_height="18dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="141dp"
+        android:layout_marginBottom="171dp"
         android:backgroundTint="@android:color/holo_purple"
         android:foregroundTint="@android:color/holo_purple"
         android:onClick="button_click"
-        android:text="@string/login"
+        android:text="Register"
         tools:layout_editor_absoluteX="153dp"
         tools:layout_editor_absoluteY="280dp" />
 
     <TextView
-        android:id="@+id/forgot_password"
+        android:id="@+id/forgot_password1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/button_login"
@@ -94,18 +94,6 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="252dp" />
 
-    <TextView
-        android:id="@+id/not_a_member_yet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/forgot_password"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="111dp"
-        android:layout_marginBottom="78dp"
-        android:text="@string/not_a_member_yet"
-        tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="475dp"
-        android:layout_alignRight="@+id/forgot_password"
-        android:layout_marginRight="111dp" />
+
 
 </RelativeLayout>

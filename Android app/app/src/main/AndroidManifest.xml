@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chandan.touchinglives">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,9 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".AddRemoveStudent"
+            android:label="@string/title_activity_add_remove_student"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".AddSavings"
+            android:label="@string/title_activity_add_savings"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddAttendance"
+            android:label="@string/title_activity_add_attendance"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".AddActivity"
             android:label="@string/title_activity_add"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Dashboard"
             android:label="@string/title_activity_dashboard"

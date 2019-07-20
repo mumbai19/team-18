@@ -22,46 +22,43 @@
             android:clickable="true"
             android:id="@+id/addActivity"
             android:layout_width="160dp"
-            android:layout_height="240dp"
+            android:layout_height="160dp"
             android:layout_margin="10dp">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
+                android:orientation="vertical"
+                android:gravity="center">
                 <ImageView
+                    android:layout_width="64dp"
                     android:id="@+id/a1234"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundgreen"
+                    android:src="@drawable/a1"
                     android:padding="10dp"
-                    android:src="@drawable/a1" />
 
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Add Activity"
                     android:textColor="#676867"
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
-
+                    android:text="Add Activity"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_margin="10dp"
-                    android:background="@color/lightgray" />
+                    android:background="@color/lightgray"
+                    android:layout_margin="10dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="5dp"
                     android:text="Mentor can add activity"
-                    android:textColor="@android:color/darker_gray" />
+                    android:padding="5dp"
+                    android:textColor="@android:color/darker_gray"/>
 
 
             </LinearLayout>
@@ -72,7 +69,7 @@
             android:clickable="true"
             android:id="@+id/addAttendance"
             android:layout_width="160dp"
-            android:layout_height="240dp"
+            android:layout_height="160dp"
             android:layout_margin="10dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -82,21 +79,20 @@
 
                 <ImageView
                     android:id="@+id/a123456"
-                    android:layout_width="100dp"
-                    android:layout_height="101dp"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
 
-                    android:layout_marginTop="30dp"
+
                     android:padding="10dp"
                     android:src="@drawable/a2" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Add Attendance"
-                    android:textColor="#676867"
+                    android:textStyle="bold"
                     android:textSize="16dp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="10dp"
+                    android:textColor="#676867"
+                    android:text="Add Attendance"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -128,7 +124,7 @@
             android:clickable="true"
             android:id="@+id/addSavings"
             android:layout_width="160dp"
-            android:layout_height="240dp"
+            android:layout_height="160dp"
             android:layout_margin="10dp">
 
             <LinearLayout
@@ -138,13 +134,13 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="100dp"
+                    android:layout_width="64dp"
                     android:id="@+id/a1234567"
-                    android:layout_height="100dp"
+                    android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundpurple"
                     android:padding="10dp"
                     android:src="@drawable/a3"
-                    android:layout_marginTop="30dp"/>
+                    />
 
                 <TextView
                     android:layout_width="41dp"
@@ -179,7 +175,7 @@
             android:clickable="true"
             android:id="@+id/addAssesment"
             android:layout_width="160dp"
-            android:layout_height="240dp"
+            android:layout_height="160dp"
             android:layout_margin="10dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -187,13 +183,13 @@
                 android:orientation="vertical"
                 android:gravity="center">
                 <ImageView
-                    android:layout_width="100dp"
+                    android:layout_width="64dp"
                     android:id="@+id/a12345"
-                    android:layout_height="100dp"
+                    android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundred"
                     android:src="@drawable/a4"
                     android:padding="10dp"
-                    android:layout_marginTop="30dp"/>
+                   />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -220,15 +216,65 @@
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
-
-
-
-
     </LinearLayout>
+    <LinearLayout
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:id="@+id/addDeleteStudent"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:id="@+id/a12345676"
+                    android:layout_height="64dp"
+                    android:background="@drawable/cerclebackgroundpurple"
+                    android:padding="10dp"
+                    android:src="@drawable/a5"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Add or Remove Students"
+                    android:textColor="#676867"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/lightgray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Mentor can add or remove students"
+                    android:padding="2dp"
+                    android:textColor="@android:color/darker_gray"/>
 
 
 
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
-
-
+</LinearLayout>
 </LinearLayout>
