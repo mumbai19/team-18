@@ -68,12 +68,12 @@
         android:layout_marginLeft="82dp" />
 
     <Button
-        android:id="@+id/button_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_register"
+        android:layout_width="69dp"
+        android:layout_height="18dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="141dp"
+        android:layout_marginBottom="171dp"
         android:backgroundTint="@android:color/holo_purple"
         android:foregroundTint="@android:color/holo_purple"
         android:onClick="button_click"
