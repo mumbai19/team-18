@@ -28,7 +28,7 @@ import java.util.Map;
 import classes.CheckNetworkStatus;
 import classes.HttpJsonParser;
 
-public class MainActivity extends AppCompatActivity {
+public class    MainActivity extends AppCompatActivity {
 
     Button button_login;
     EditText login_id, password;
