@@ -102,5 +102,6 @@
     <string name="not_a_member_yet">Not a member yet?</string>
     <string name="login">Login</string>
     <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_add_savings">AddSavings</string>
 
 </resources>
