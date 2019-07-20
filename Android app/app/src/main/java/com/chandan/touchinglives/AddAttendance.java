@@ -23,16 +23,24 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import classes.JsonHelper;
+import android.widget.ArrayAdapter;import android.widget.ListView;
+
+
 
 
 public class AddAttendance extends AppCompatActivity {
+private ListView simpleList;
     private String LOCAL_URL= "http://a490268b.ngrok.io/studentdata";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ListView listView = (ListView) findViewById(R.id.listView1);
+
         setContentView(R.layout.activity_add_attendance);
+
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = LOCAL_URL;
@@ -65,16 +73,20 @@ public class AddAttendance extends AppCompatActivity {
             Toast.makeText(getBaseContext(),"NO NO NO -- " + e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
         }
 
+
         Map<String,Object> map = new HashMap<>();
         JsonHelper jsonHelper = new JsonHelper();
         try {
             map = jsonHelper.toMap(jsonObject);
 
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        String countryList[] = {"India", "China", "australia", "Portugle", "America", "NewZealand"};
         Toast.makeText(getBaseContext(), map.get("1").toString(),Toast.LENGTH_LONG).show();
 
-
+        simpleList = (ListView)findViewById(R.id.listView1);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_add_attendance, R.id.textView, countryList);
+        simpleList.setAdapter(arrayAdapter);
     }}
