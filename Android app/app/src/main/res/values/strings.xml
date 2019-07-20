@@ -92,8 +92,7 @@
     <string name="strawberry">Strawberry</string>
     <string name="potato">Potato</string>
     <string name="grapes">Grapes</string>
-
-
+    <string name="title_activity_add">AddActivity</string>
 
 
 </resources>
