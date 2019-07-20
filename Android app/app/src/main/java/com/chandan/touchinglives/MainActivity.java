@@ -40,11 +40,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-TextView textView;
+        TextView textView;
         login_id = (EditText) findViewById(R.id.login_id);
         password = (EditText) findViewById(R.id.password);
-        button_login = findViewById(R.id.button_login);
-        button_login.setOnClickListener(new View.OnClickListener() {
+     //   button_login = findViewById(R.id.button_login);
+   Intent i =new Intent(MainActivity.this,Dashboard.class);
+   startActivity(i);
+
+
+    }}
+      /*  button_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -169,5 +174,4 @@ TextView textView;
             });
         }
     }
-}
-*/
+}*/
