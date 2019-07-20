@@ -44,24 +44,34 @@ def programname():
 	progname=["Beginner","Intermediate","Advanced"]
 	return jsonify({"key1":2})
 
-@app.route("/login",methods=["GET"])
+@app.route("/login",methods=["POST"])
 def login():
 	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
 	cur = con.cursor()
-	# uid = 1
-	# pd = 'user2'
-	# sql = "SELECT `password` FROM `user` WHERE `u_id`=%s"
-	sql = "INSERT INTO `program` (`program_name`) VALUES (%s)"
-	cur.execute(sql, ('very-secret'))
-	con.commit()
-	con.close()
+	uid = request.form['uid']
+	pwd = request.form['pwd']
+	sql = "SELECT `password` FROM `user` WHERE `u_id`=%s"
+	# sql = "INSERT INTO `program` (`program_name`) VALUES (%s)"
+	cur.execute(sql, (uid))
+	# con.commit()
+	# con.close()
 	# cur.execute(sql, (uid))
-	# result = cur.fetchone()
+	result = cur.fetchone()
 	# return result
-	# if pd == result['password']:
-	# 	return 'True'
-	# else:
-	# 	return 'False'
+	if pwd == result['password']:
+		return '1'
+	else:
+		return '0'
+
+@app.route("/getactivities/<uid>/<prgm_id>",methods=["GET"])
+def getactivities(uid,prgm_id):
+	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
+	cur = con.cursor()
+	sql = "SELECT * FROM activity WHERE `proj_id` = `%s`"
+	cur.execute(sql,(prgm_id))
+	result = cur.fetchall()
+	con.close()
+	return result
 
 # @app.route("")
 
