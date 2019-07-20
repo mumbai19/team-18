@@ -103,5 +103,6 @@
     <string name="login">Login</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_add_savings">AddSavings</string>
+    <string name="title_activity_add_remove_student">AddRemoveStudent</string>
 
 </resources>
