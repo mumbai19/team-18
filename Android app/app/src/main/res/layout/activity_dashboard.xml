@@ -227,7 +227,7 @@
         <android.support.v7.widget.CardView
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
-            android:id="@+id/addSavings"
+            android:id="@+id/addDeleteStudent"
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:layout_margin="10dp">
