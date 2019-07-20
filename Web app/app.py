@@ -1,5 +1,5 @@
 from flask import Flask
-import pymysql
+import pymysql,json,datetime
 from flask import render_template,url_for,flash,redirect,request,abort,Flask,jsonify
 
 app = Flask(__name__)
@@ -67,11 +67,11 @@ def login():
 def getactivities(uid,prgm_id):
 	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
 	cur = con.cursor()
-	sql = "SELECT * FROM activity WHERE `proj_id` = `%s`"
-	cur.execute(sql,(prgm_id))
+	sql = "SELECT a_id,a_name,description FROM activity WHERE `prog_id` = %s"
+	cur.execute(sql,(int(prgm_id)))
 	result = cur.fetchall()
 	con.close()
-	return result
+	return json.dumps(result)
 
 # @app.route("")
 
