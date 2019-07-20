@@ -73,15 +73,24 @@ def getactivities(uid,prgm_id):
 	con.close()
 	return json.dumps(result)
 
-# @app.route("/addactivities",methods=["POST"])
-# def getactivities(uid,prgm_id):
-# 	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
-# 	cur = con.cursor()
-# 	sql = "INSERT INTO  (a_id,a_name,description,date) FROM activity WHERE `prog_id` = %s"
-# 	cur.execute(sql,(int(prgm_id)))
-# 	result = cur.fetchall()
-# 	con.close()
-# 	return json.dumps(result)
+@app.route("/addactivities",methods=["GET"])
+def addactivities():
+	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
+	cur = con.cursor()
+	# a_id = request.form['a_id']
+	# date = request.form['date']
+	# a_name = request.form['a_name']
+	# description = request.form['description']
+	prog_id = 1
+	date = "2019-07-16"
+	a_name = "affasf"
+	description = "sdfdsfvasdv"
+	sql = "INSERT INTO activity (a_name,description,date,prog_id) values (%s,%s,%s,%s)"
+	cur.execute(sql,(a_name,description,date,prog_id))
+	# result = cur.fetchall()
+	con.commit()
+	con.close()
+	return "1"
 
 # @app.route("")
 
