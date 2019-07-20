@@ -1,5 +1,6 @@
 from flask import Flask
 import pymysql
+from flask import render_template,url_for,flash,redirect,request,abort,Flask,jsonify
 
 app = Flask(__name__)
 
@@ -18,5 +19,11 @@ def home():
 	result = cur.fetchall()
 
 	return result[0]
+
+
+@app.route("/program",methods=["GET"])
+def programname():
+	progname=["Beginner","Intermediate","Advanced"]
+	return jsonify({"key1":2})
 
 app.run()

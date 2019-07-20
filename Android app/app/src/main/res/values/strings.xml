@@ -1,3 +1,98 @@
 <resources>
     <string name="app_name">Touching Lives</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+
+
+    >
+    <string name="lab_name">Lab name - </string>
+    <string name="req">Requested - </string>
+    <string name="appr">Approved - </string>
+    <string name="soils">Soil Samples Received - </string>
+    <string name="result">Result Generated - </string>
+    <string name="main_dialog_progress_title">Please wait...</string>
+    <string name="stmt_land">Calculate your land area using map</string>
+    <string name="pesticide">Calculate Pesticides</string>
+    <string name="stmt_pesticide">Calculate pesticides for your crops</string>
+    <string name="fertilizer">Calculate Fertilizers</string>
+    <string name="stmt_fertilizer">Calculate fertilizers for your crops</string>
+    <string name="status">View Status</string>
+    <string name="stmt_status">View status of your reports</string>
+    <string name="chat">Chatbot</string>
+    <string name="stmt_chat">Ask any queries</string>
+    <string name="lab_1">Lab1</string>
+    <string name="lab_2">Lab2</string>
+    <string name="lab_3">Lab3</string>
+    <string name="lab_4">Lab4</string>
+    <string name="notice_3">Please long press on result to calculate fertilizer </string>
+    <string name="notice_1">To Calculate Fertilizers, you need N,P,K values</string>
+    <string name="notice_2">Please enter soil values (in kg/ha)</string>
+    <string name="notice_4">We require your Land area and Crop type </string>
+    <string name="notice_5">Enter your land area </string>
+    <string name="notice_6">Next </string>
+    <string name="notice_7">Select your crop here </string>
+    <string name="notice_8">Please select any lab </string>
+
+    <string name="notice_9">Enter value for N:  </string>
+    <string name="notice_10">Enter value for P: </string>
+    <string name="notice_11">Enter value for K: </string>
+    <string name="notice_12">Enter value for pH: </string>
+
+
+    <string name="Crop1">Cotton </string>
+    <string name="Crop2">Groundnut </string>
+    <string name="Crop3">Jute </string>
+    <string name="Crop4">Maize </string>
+    <string name="Crop5">Rice </string>
+    <string name="Crop6">Pearl millet </string>
+    <string name="Crop7">Pigeon Pea </string>
+    <string name="Crop8">Wheat </string>
+    <string name="Crop9">Sorghum </string>
+    <string name="Crop10">Sugar Cane </string>
+    <string name="Crop11">Mustard </string>
+
+    <string name="section_measure">Measure</string>
+    <string name="section_mapview">Map view</string>
+    <string name="measure_distance">Distance</string>
+    <string name="measure_area">Area</string>
+    <string name="measure_elevation">Elevation</string>
+    <string name="mapview_map">Map</string>
+    <string name="mapview_satellite">Satellite</string>
+    <string name="mapview_terrain">Terrain</string>
+    <string name="metric">Metric units</string>
+    <string name="about">About</string>
+    <string name="about_text">This app was created by Thomas Hoffmann (<a href="http://www.j4velin.de">www.j4velin.de</a>) and uses the \'Google Maps API v2\'.\n\nMaps Measure is open source! Get the code from <a href="https://github.com/j4velin/MapsMeasure">GitHub</a>.\n\n</string>
+    <string name="app_version">App version: %s</string>
+    <string name="moreapps">More apps</string>
+    <string name="delete">delete</string>
+    <string name="delete_all">Delete all %d points?</string>
+    <string name="no_location_found">No location found</string>
+    <string name="units">Units</string>
+    <string name="savenshare">Save &amp; share</string>
+    <string name="save">Save</string>
+    <string name="load">Load</string>
+    <string name="share">Share</string>
+    <string name="file_saved">File saved</string>
+    <string name="error">Error: %s</string>
+    <string name="select_file">Select file</string>
+    <string name="no_files_found">No files found in %s</string>
+    <string name="elevation_error">There was an error connecting to the Google Evelation API: Server currently not available or daily request limit reached</string>
+    <string name="elevation_error_no_connection">No internet connection: The app needs to query the Google Evelation API to get altitude data and therefore requires an active internet connection to calculate evelation data</string>
+    <string name="buy_pro">This feature is currently not available in the free version of the app. Do you want to upgrade to the pro version now?</string>
+    <string name="file_name">File name (optional)</string>
+    <string name="file_path">File will be saved here: %s</string>
+    <string name="dir_read_error">Error reading directory %s</string>
+    <string name="marker_on_current_location">A marker was added on your current location</string>
+    <string name="no_google_connection">Can not reach Google server to query for elevation information - please check your internet connection</string>
+    <string name="select_crop">Please select a crop of your choice</string>
+    <string name="rice">Rice</string>
+    <string name="corn">Corn</string>
+    <string name="apple">Apple</string>
+    <string name="tomato">Tomato</string>
+    <string name="pepper">Pepper</string>
+    <string name="strawberry">Strawberry</string>
+    <string name="potato">Potato</string>
+    <string name="grapes">Grapes</string>
+    <string name="title_activity_add">AddActivity</string>
+
+
 </resources>
