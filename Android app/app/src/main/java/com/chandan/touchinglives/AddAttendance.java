@@ -11,28 +11,70 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class AddAttendance extends AppCompatActivity {
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import classes.JsonHelper;
+
+
+public class AddAttendance extends AppCompatActivity {
+    private String LOCAL_URL= "http://a490268b.ngrok.io/studentdata";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_attendance);
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(getApplicationContext(),R.layout.activity_add_remove_student,R.id.textView1,getResources().getStringArray(R.array.Strings));
-        setListAdapter(adapter);
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = LOCAL_URL;
+//retrieving from list
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        Toast.makeText(getBaseContext(),"Response is: "+ response,Toast.LENGTH_LONG).show();
+                        json(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getBaseContext(),"That didn't work!" + error,Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
+
 
     }
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        String item = (String) getListAdapter().getItem(position);
-        Toast.makeText(this, item+" selected", Toast.LENGTH_LONG).show();
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_my_list_view_with_toggle, menu);
-        return true;
-    }
-}
-
+    public void json(String result){
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(result);
+        } catch (JSONException e) {
+            Toast.makeText(getBaseContext(),"NO NO NO -- " + e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
         }
 
-}
+        Map<String,Object> map = new HashMap<>();
+        JsonHelper jsonHelper = new JsonHelper();
+        try {
+            map = jsonHelper.toMap(jsonObject);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Toast.makeText(getBaseContext(), map.get("1").toString(),Toast.LENGTH_LONG).show();
+
+
+    }}
