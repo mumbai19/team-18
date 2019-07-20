@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/login_id"
+        android:layout_alignLeft="@+id/login_id"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-37dp"
+        android:layout_marginLeft="-37dp"
+        android:layout_marginTop="60dp"
+        android:text="Welcome to TouchingLives"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.161" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/login_id"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="-44dp"
+        android:text="@string/enter_credentials"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="136dp"
+        android:layout_marginLeft="85dp"
+        android:layout_alignParentLeft="true" />
+
+    <EditText
+        android:id="@+id/register_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/password"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="190dp"
+        android:ems="10"
+        android:hint="@string/login_id"
+        android:inputType="text|textPersonName"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="163dp"
+        android:layout_alignLeft="@+id/password" />
+
+    <EditText
+        android:id="@+id/password1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="254dp"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="220dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="82dp" />
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="141dp"
+        android:backgroundTint="@android:color/holo_purple"
+        android:foregroundTint="@android:color/holo_purple"
+        android:onClick="button_click"
+        android:text="Register"
+        tools:layout_editor_absoluteX="153dp"
+        tools:layout_editor_absoluteY="280dp" />
+
+    <TextView
+        android:id="@+id/forgot_password1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_login"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="252dp"
+        android:text="@string/forgot_password"
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="335dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="252dp" />
+
+
+
+</RelativeLayout>

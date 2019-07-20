@@ -7,7 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button button_login;
     EditText login_id, password;
-  private static final String BASE_URL = "";
+ // private static final String BASE_URL = "";
     ProgressDialog pDialog;
     private int success;
 
@@ -32,13 +40,46 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+TextView textView;
         login_id = (EditText) findViewById(R.id.login_id);
         password = (EditText) findViewById(R.id.password);
         button_login = findViewById(R.id.button_login);
-    }
+        button_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-    public void button_click(View view) {
+                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+                String url ="http://52.77.233.40:5000/program" ;
+
+// Request a string response from the provided URL.
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                // Display the first 500 characters of the response string.
+                                Toast.makeText(getApplicationContext(),"Response is: "+ response.substring(0,500), Toast.LENGTH_SHORT).show();
+
+                               // textView.setText("Response is: "+ response.substring(0,500));
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(),"Didnt work", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+// Add the request to the RequestQueue.
+                queue.add(stringRequest);
+            }
+        });
+
+
+
+
+    }}
+
+   /* public void button_click(View view) {
         String log_id = login_id.getText().toString();
         String pwd = password.getText().toString();
 
@@ -63,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-   private void checkLoginDetails() {
+    private void checkLoginDetails() {
         if (!"".equals(login_id.getText().toString()) &&
                 !"".equals(password.getText().toString()))
             new CheckLoginDetails().execute();
@@ -124,11 +165,9 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.LENGTH_LONG).show();
 
                     }
-
                 }
-
             });
-
         }
     }
 }
+*/
