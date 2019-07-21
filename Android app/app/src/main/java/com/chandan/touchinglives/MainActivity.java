@@ -1,5 +1,6 @@
 package com.chandan.touchinglives;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -92,7 +93,8 @@ button_login.setOnClickListener(new View.OnClickListener() {
                         Log.e("a"," "+response);
 
                             Toast.makeText(getApplicationContext(), "User registered successfully", Toast.LENGTH_SHORT).show();
-
+                            Intent i = new Intent(MainActivity.this,Dashboard.class);
+                            startActivity(i);
                     }
                 },
                 new Response.ErrorListener() {

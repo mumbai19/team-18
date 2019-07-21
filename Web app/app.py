@@ -154,8 +154,9 @@ def addactivities():
 	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
 	cur = con.cursor()
 	req = request.json
-	prog_id = req['prog_id']
-	date = req['date']
+	#prog_id = req['prog_id']
+	prog_id = 2	
+	date = '2019-07-21'
 	a_name = req['a_name']
 	description = req['description']
 	# prog_id = 1

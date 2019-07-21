@@ -37,7 +37,7 @@ private ListView simpleList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ListView listView = (ListView) findViewById(R.id.listView1);
+        //ListView listView = (ListView) findViewById(R.id.listView1);
 
         setContentView(R.layout.activity_add_attendance);
 
@@ -86,7 +86,7 @@ private ListView simpleList;
         String countryList[] = {"India", "China", "australia", "Portugle", "America", "NewZealand"};
         Toast.makeText(getBaseContext(), map.get("1").toString(),Toast.LENGTH_LONG).show();
 
-        simpleList = (ListView)findViewById(R.id.listView1);
+        //simpleList = (ListView)findViewById(R.id.listView1);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_add_attendance, R.id.textView, countryList);
         simpleList.setAdapter(arrayAdapter);
     }}

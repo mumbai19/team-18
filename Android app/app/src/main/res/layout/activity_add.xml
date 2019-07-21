@@ -56,7 +56,6 @@
                 android:background="@drawable/textinput"
                 android:ems="10"
                 android:hint="Activity name"
-                android:inputType="numberDecimal"
                 android:paddingLeft="10dp"
 
                 android:text="" />
@@ -71,7 +70,6 @@
                 android:background="@drawable/textinput"
                 android:ems="10"
                 android:hint="Description"
-                android:inputType="numberDecimal"
                 android:paddingLeft="10dp" />
 
 
