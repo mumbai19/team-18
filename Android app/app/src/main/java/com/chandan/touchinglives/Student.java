@@ -1,7 +1,7 @@
 package com.chandan.touchinglives;
 public class Student {
 
-    private  int rno;
+    private  String rno;
     private String name;
 
     public Student(){
@@ -15,16 +15,16 @@ public class Student {
                 " Name= " + name + "\n" ;
     }
 
-    public Student(int rno, String name) {
+    public Student(String rno, String name) {
         this.rno = rno;
         this.name = name;
     }
 
-    public int getRno() {
+    public String getRno() {
         return rno;
     }
 
-    public void setRno(int rno) {
+    public void setRno(String rno) {
         this.rno = rno;
     }
 

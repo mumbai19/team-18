@@ -27,6 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -87,23 +88,46 @@ private ArrayList<HashMap<String,String>>studentList;
 
 
     }
-    public void json(String result){
+    public void json(String result) {
         JSONObject jsonObject = null;
         try {
             jsonObject = new JSONObject(result);
         } catch (JSONException e) {
-            Toast.makeText(getBaseContext(),"NO NO NO -- " + e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), "NO NO NO -- " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
         }
 
 
-        Map<String,Object> map = new HashMap();
+        Map<String, Object> map = new HashMap();
 
         JsonHelper jsonHelper = new JsonHelper();
         try {
 
             map = jsonHelper.toMap(jsonObject);
 
-                        
+            Iterator<Map.Entry<String, Object>> itr = map.entrySet().iterator();
+            while (itr.hasNext()) {
+                Map.Entry<String, Object> entry = itr.next();
+                String roll_no = entry.getKey();
+                String name = entry.getValue().toString();
+
+                Student s = new Student();
+                s.setRno(roll_no);
+                s.setName(name);
+
+                sdata.add(s);
+
+
+
+            }
+
+            adapter=new ArrayAdapter<Student>(AddAttendance.this,android.R.layout.simple_expandable_list_item_1,sdata);
+            lvData.setAdapter(adapter);
+//            for (int i=0;i<map.size();i++){
+//
+//                Student s=map.get;
+//                sdata.add(s);
+
+
 
 
                     // Locate ListView in listview_main.xml
