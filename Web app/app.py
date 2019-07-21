@@ -238,8 +238,9 @@ def addactivities():
 	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
 	cur = con.cursor()
 	req = request.json
-	prog_id = req['prog_id']
-	date = req['date']
+	#prog_id = req['prog_id']
+	prog_id = 2	
+	date = '2019-07-21'
 	a_name = req['a_name']
 	description = req['description']
 	# prog_id = 1
@@ -268,16 +269,16 @@ def addassessments():
 	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
 	cur = con.cursor()
 	req = request.json
-	prog_id = req['prog_id']
+	ass_name = req['ass_name']
 	date = req['date']
-	a_name = req['a_name']
-	description = req['description']
+	prog_id = req['prog_id']
+	u_id = req['u_id']
 	# prog_id = 1
 	# date = "2019-07-16"
 	# a_name = "affasf"
 	# description = "sdfdsfvasdv"
-	sql = "INSERT INTO activity (a_name,description,date,prog_id) values (%s,%s,%s,%s)"
-	cur.execute(sql,(a_name,description,date,prog_id))
+	sql = "INSERT INTO assessment (asses_name,date,u_id) values (%s,%s,%s,%s)"
+	cur.execute(sql,(ass_name,date,prog_id,u_id))
 	# result = cur.fetchall()
 	con.commit()
 	con.close()

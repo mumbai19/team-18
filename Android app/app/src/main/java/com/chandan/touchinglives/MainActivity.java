@@ -1,5 +1,6 @@
 package com.chandan.touchinglives;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,6 +36,8 @@ String BASE_URL="http://52.77.233.40:5000";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView textView;
+        Intent i=new Intent(MainActivity.this,Dashboard.class);
+        startActivity(i);
         login_id = (EditText) findViewById(R.id.login_id);
         password = (EditText) findViewById(R.id.password);
         button_login = findViewById(R.id.button_login);
@@ -92,7 +95,8 @@ button_login.setOnClickListener(new View.OnClickListener() {
                         Log.e("a"," "+response);
 
                             Toast.makeText(getApplicationContext(), "User registered successfully", Toast.LENGTH_SHORT).show();
-
+                            Intent i = new Intent(MainActivity.this,Dashboard.class);
+                            startActivity(i);
                     }
                 },
                 new Response.ErrorListener() {
