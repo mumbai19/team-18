@@ -107,7 +107,8 @@ public class AddSavings extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                     // TODO Auto-generated method stub
-                    String value= adapter.getItem(position);
+                    String value= String.valueOf(adapter.getItem(position));
+
                     Toast.makeText(getApplicationContext(),value,Toast.LENGTH_SHORT).show();
 
                 }
