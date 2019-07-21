@@ -36,6 +36,8 @@ String BASE_URL="http://52.77.233.40:5000";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView textView;
+        Intent i=new Intent(MainActivity.this,Dashboard.class);
+        startActivity(i);
         login_id = (EditText) findViewById(R.id.login_id);
         password = (EditText) findViewById(R.id.password);
         button_login = findViewById(R.id.button_login);
