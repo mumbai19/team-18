@@ -39,6 +39,7 @@ public class Dashboard extends AppCompatActivity {
 AddActivity=findViewById(R.id.addActivity);
 AddAttendance=findViewById(R.id.addAttendance);
 AddSavings=findViewById(R.id.addSavings);
+
         AddActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +78,17 @@ queue.add(stringRequest);
 
                 Intent i = new Intent(Dashboard.this, AddAttendance.class);
                 startActivity(i);
+
+            }
+        });
+
+        AddSavings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i=new Intent(Dashboard.this,AddSavings.class);
+                startActivity(i);
+
 
             }
         });
