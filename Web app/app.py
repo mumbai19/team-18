@@ -2,6 +2,7 @@ from flask import Flask
 import pymysql
 import json
 from flask import render_template,url_for,flash,redirect,request,abort,Flask,jsonify
+import pandas as pd
 from datetime import datetime
 from datetime import date
 app = Flask(__name__)
@@ -64,7 +65,7 @@ def addstudentdata():
 	cur = con.cursor()
 	content=request.get_json(force=True)
 	sql="INSERT INTO `student` (`s_name`,`prog_id`,`ph_no`,`doj`,`dol`,`present_status`) VALUES (%s,%s,%s,%s,%s,%s)";
-	val=(content['name'],int(content['program_id']),int(content['phone']),content['doj'],content['dol'],1)
+	val=(content['name'],int(content['program_id']),int(content['phone']),content['doj'],None,1)
 	cur.execute(sql,val)
 	con.commit()
 	return jsonify({"status":True})
@@ -131,8 +132,15 @@ def paysavings():
 		cur.execute(sql,val)
 	con.commit()
 	return "Hello"
-		 
 
+@app.route("/generatereports",methods=["GET"])
+def generate_reports():
+	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
+	cur = con.cursor()
+	sql='select * from attendance'
+	rep=pd.read_sql(sql,con)
+	print(rep.to_string())
+	return "Hello"
 
 @app.route("/login",methods=["POST"])
 def login():
@@ -182,8 +190,6 @@ def addactivities():
 	con.commit()
 	con.close()
 	return "1"
-
-
 
 # @app.route("")
 
