@@ -5,15 +5,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/animate/animate.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
 		<nav class="navbar navbar-dark bg-dark">
-				<a class="navbar-brand" href="#">Navbar</a>
+				<a class="navbar-brand" href="#">Touching Lives</a>
+				<a class="navbar-brand navbar-right" href="{{url_for('my_form')}}">Add Mentor</a>
+				<a class="navbar-brand navbar-right" href="{{url_for('studentlist')}}">List Students</a>
+				<a class="navbar-brand navbar-right" href="{{url_for('wbaddstudent')}}">Add Student</a>
+				<a class="navbar-brand navbar-right" href="{{url_for('wbassessmentlist')}}">Assessment List</a>
 		</nav>
 				 
 	<div class="limiter">
@@ -27,8 +31,7 @@
 							<thead>
 								<tr class="row100 head">
 									<th class=" column1">Student name</th>
-                                    <th class=" column2">Savings</th>
-                                    <th class=" column3"></th>
+                                    <th class=" column2">Total Savings</th>
 								</tr>
 							</thead>
 						</table>
@@ -37,37 +40,12 @@
 					<div class="table100-body js-pscroll">
 						<table>
 							<tbody>
-								<tr class="row100 body">
-									<td class=" column1">student 1</td>
-                                    <td class=" column2">40</td>
-                                    <td class=" column3"><input type='button'class='btn btn-primary' value='update'></td>
-								</tr>
-
-								<tr class="row100 body">
-									<td class=" column1">student 2</td>
-                                    <td class=" column2">59</td>
-                                    <td class=" column3"><input type='button' class='btn btn-primary' value='update'></td>
-
-								
-
-								</tr>
-
-								<tr class="row100 body">
-									<td class=" column1">student 3</td>
-                                    <td class=" column2">50</td>
-                                    <td class=" column3"><input type='button' class='btn btn-primary' value='update'></td>
-
-									
-								</tr>
-
-								<tr class="row100 body">
-									<td class=" column1">student 4</td>
-                                    <td class=" column2">60</td>
-                                    <td class=" column3"><input type='button' class='btn btn-primary' value='update'></td>
-
-								
-								</tr>
-
+									{%for res in result%}
+									<tr class="row100 head">
+										<td class=" column1">{{res.s_name}}</td>
+										<td class=" column2">{{res.s1}}</td>
+									</tr>
+									{%endfor%}
 							</tbody>
 						</table>
 					</div>
