@@ -27,6 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -37,7 +38,12 @@ import android.widget.ArrayAdapter;import android.widget.ListView;
 
 
 public class AddAttendance extends AppCompatActivity {
-private ListView studentListView;
+
+    ListView lvData;
+    ArrayList<Student>sdata=new ArrayList<>();
+    ArrayAdapter<Student> adapter;
+
+    private ListView studentListView;
 //private static final String key_roll="Roll";
     private static final String key_nmae="Name";
    private ListView listView;
@@ -53,6 +59,10 @@ private ArrayList<HashMap<String,String>>studentList;
         //ListView listView = (ListView) findViewById(R.id.listView1);
 
         setContentView(R.layout.activity_add_attendance);
+
+        lvData=(ListView)findViewById(R.id.lvData);
+
+
         //simpleList = (ListView)findViewById(R.id.listView1);
 
           RequestQueue queue = Volley.newRequestQueue(this);
@@ -78,36 +88,51 @@ private ArrayList<HashMap<String,String>>studentList;
 
 
     }
-    public void json(String result){
+    public void json(String result) {
         JSONObject jsonObject = null;
         try {
             jsonObject = new JSONObject(result);
         } catch (JSONException e) {
-            Toast.makeText(getBaseContext(),"NO NO NO -- " + e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), "NO NO NO -- " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
         }
 
 
-        Map<String,Object> map = new HashMap();
+        Map<String, Object> map = new HashMap();
 
         JsonHelper jsonHelper = new JsonHelper();
         try {
 
             map = jsonHelper.toMap(jsonObject);
-            ListView listView;
-            String[] SamsungPhones = new String[] { "Galaxy S", "Galaxy S2",
-                    "Galaxy Note", "Galaxy Beam", "Galaxy Ace Plus", "Galaxy S3",
-                    "Galaxy S Advance", "Galaxy Wave 3", "Galaxy Wave Y",
-                    "Galaxy Nexus", "Galaxy W", "Galaxy Y", "Galaxy Mini",
-                    "Galaxy Gio", "Galaxy Wave", "Galaxy Wave 2" };
 
-            // Locate ListView in listview_main.xml
-            listView = (ListView) findViewById(R.id.listView);
+            Iterator<Map.Entry<String, Object>> itr = map.entrySet().iterator();
+            while (itr.hasNext()) {
+                Map.Entry<String, Object> entry = itr.next();
+                String roll_no = entry.getKey();
+                String name = entry.getValue().toString();
+
+                Student s = new Student();
+                s.setRno(roll_no);
+                s.setName(name);
+
+                sdata.add(s);
+
+
+
+            }
+
+            adapter=new ArrayAdapter<Student>(AddAttendance.this,android.R.layout.simple_expandable_list_item_1,sdata);
+            lvData.setAdapter(adapter);
+//            for (int i=0;i<map.size();i++){
+//
+//                Student s=map.get;
+//                sdata.add(s);
+
+
+
+
+                    // Locate ListView in listview_main.xml
 
             // Bind array strings into an adapter
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1, android.R.id.text1,
-                    SamsungPhones);
-            listView.setAdapter(adapter);
 
 
         } catch (JSONException e) {
@@ -121,7 +146,5 @@ private ArrayList<HashMap<String,String>>studentList;
 
 
         //simpleList = (ListView)findViewById(R.id.listView1);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_add_attendance, R.id.textView, countryList);
-        simpleList.setAdapter(arrayAdapter);
-    }}
-}
+
+    }
