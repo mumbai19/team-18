@@ -68,65 +68,84 @@ private ArrayList<HashMap<String,String>>studentList;
 
         //simpleList = (ListView)findViewById(R.id.listView1);
 
+          RequestQueue queue = Volley.newRequestQueue(this);
+        String url = LOCAL_URL;
+//retrieving from list
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        Toast.makeText(getBaseContext(),"Response is: "+ response,Toast.LENGTH_LONG).show();
+                        json(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getBaseContext(),"That didn't work!" + error,Toast.LENGTH_LONG).show();
+            }
+        });
 
 
+
+        queue.add(stringRequest);
 
     }
-            public void json(String result) {
-                JSONObject jsonObject = null;
-                try {
-                    jsonObject = new JSONObject(result);
-                } catch (JSONException e) {
-                    Toast.makeText(getBaseContext(), "NO NO NO -- " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-                }
+    public void json(String result) {
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(result);
+        } catch (JSONException e) {
+            Toast.makeText(getBaseContext(), "NO NO NO -- " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+        }
 
-                Log.e("a",jsonObject.toString());
-                Map<String, Object> map = new HashMap();
+        Log.e("a",jsonObject.toString());
+        Map<String, Object> map = new HashMap();
 
-                JsonHelper jsonHelper = new JsonHelper();
-                try {
+        JsonHelper jsonHelper = new JsonHelper();
+        try {
 
-                    map = jsonHelper.toMap(jsonObject);
+            map = jsonHelper.toMap(jsonObject);
 
-                    Iterator<Map.Entry<String, Object>> itr = map.entrySet().iterator();
-                    while (itr.hasNext()) {
-                        Map.Entry<String, Object> entry = itr.next();
-                        String roll_no = entry.getKey();
-                        String name = entry.getValue().toString();
+            Iterator<Map.Entry<String, Object>> itr = map.entrySet().iterator();
+            while (itr.hasNext()) {
+                Map.Entry<String, Object> entry = itr.next();
+                String roll_no = entry.getKey();
+                String name = entry.getValue().toString();
 
-                        Student s = new Student();
-                        s.setRno(roll_no);
-                        s.setName(name);
+                Student s = new Student();
+                s.setRno(roll_no);
+                s.setName(name);
 
-                        sdata.add(s);
-
-
-
-                    }
-
-                    adapter=new ArrayAdapter<Student>(AddAttendance.this,android.R.layout.simple_expandable_list_item_1,sdata);
-                    lvData.setAdapter(adapter);
-        //            for (int i=0;i<map.size();i++){
-        //
-        //                Student s=map.get;
-        //                sdata.add(s);
+                sdata.add(s);
 
 
-
-
-                            // Locate ListView in listview_main.xml
-
-                    // Bind array strings into an adapter
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                Toast.makeText(getBaseContext(), map.get("1").toString(),Toast.LENGTH_LONG).show();
-                  //  studentList.add((HashMap<String, String>) newmap);
 
             }
+
+            adapter=new ArrayAdapter<Student>(AddAttendance.this,android.R.layout.simple_expandable_list_item_1,sdata);
+            lvData.setAdapter(adapter);
+//            for (int i=0;i<map.size();i++){
+//
+//                Student s=map.get;
+//                sdata.add(s);
+
+
+
+
+                    // Locate ListView in listview_main.xml
+
+            // Bind array strings into an adapter
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Toast.makeText(getBaseContext(), map.get("1").toString(),Toast.LENGTH_LONG).show();
+          //  studentList.add((HashMap<String, String>) newmap);
+
+    }
 
 
         //simpleList = (ListView)findViewById(R.id.listView1);
