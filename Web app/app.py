@@ -13,7 +13,6 @@ db = "touching_lives"
 
 @app.route("/dept")
 def home():
-
 	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
 	cur = con.cursor()
 	print(str(cur))
@@ -21,7 +20,7 @@ def home():
 	result = cur.fetchall()
 	print(result)
 
-	return "hel"
+	return "Hello"
 
 @app.route('/')
 def my_form():
@@ -38,6 +37,33 @@ def add_user():
 	
 	cur.execute("INSERT into user values('password' ,'prog_id')")
 	cur.close()
+
+@app.route('/', methods=['POST'])
+
+def add_student():
+	s_name = request.form['s_name']
+	prog_id= request.form['prog_id']
+	ph_no= request.form['ph_no']
+	doj= request.form['doj']
+	dol= request.form['dol']
+
+	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
+	cur = con.cursor()
+
+	
+	cur.execute("INSERT into student values('s_name' ,'prog_id','ph_no','doj','dol,'1')")
+	cur.commit()
+	cur.close()
+
+
+def get_student_data():
+
+	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
+	cur = con.cursor()
+
+	cur.execute("SELECT s_name,ph_no,doj,prog_id FROM student")
+	result = cur.fetchall()
+
 
 @app.route("/program",methods=["GET"])
 def programname():
@@ -65,10 +91,10 @@ def addstudentdata():
 	cur = con.cursor()
 	content=request.get_json(force=True)
 	sql="INSERT INTO `student` (`s_name`,`prog_id`,`ph_no`,`doj`,`dol`,`present_status`) VALUES (%s,%s,%s,%s,%s,%s)";
-	val=(content['name'],int(content['program_id']),int(content['phone']),content['doj'],content['dol'],int(content['status']))
+	val=(content['name'],int(content['program_id']),int(content['phone']),content['doj'],content['dol'],1)
 	cur.execute(sql,val)
 	con.commit()
-	return "Hello"
+	return jsonify({"status":True})
 
 @app.route("/addattendance",methods=["POST"])
 def addattendance():
@@ -91,7 +117,7 @@ def addattendance():
 		cur.execute(sql,val)
 		con.commit()
 		
-	return "Hello"
+	return jsonify({"status":True})
 
 @app.route("/getattendance",methods=["GET"])
 def getattendance():
@@ -118,7 +144,22 @@ def addsavings():
 	con.commit()
 	return "Hello"
 
-app.run(debug=True)
+@app.route("/paysavings",methods=["POST"])
+def paysavings():
+	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
+	cur = con.cursor()
+	content=request.get_json(force=True)
+	# print(content['savings'])
+	list1=content['savings']
+	for elem in list1:
+		print(elem)
+		sql="update `savings` set `status`= 1 where `s_id`=%s"
+		val=(int(elem))
+		cur.execute(sql,val)
+	con.commit()
+	return "Hello"
+		 
+
 
 @app.route("/login",methods=["POST"])
 def login():
@@ -170,7 +211,35 @@ def addactivities():
 	con.close()
 	return "1"
 
+@app.route("/getassessments/<uid>/<prgm_id>",methods=["GET"])
+def getassessments(uid,prgm_id):
+	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
+	cur = con.cursor()
+	sql = "SELECT * FROM assessment WHERE `prog_id` = %s and `u_id` = %s"
+	cur.execute(sql,(prgm_id,uid))
+	result = cur.fetchall()
+	con.close()
+	return json.dumps(result)
 
+@app.route("/addassessments",methods=["POST"])
+def addassessments():
+	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
+	cur = con.cursor()
+	req = request.json
+	prog_id = req['prog_id']
+	date = req['date']
+	a_name = req['a_name']
+	description = req['description']
+	# prog_id = 1
+	# date = "2019-07-16"
+	# a_name = "affasf"
+	# description = "sdfdsfvasdv"
+	sql = "INSERT INTO activity (a_name,description,date,prog_id) values (%s,%s,%s,%s)"
+	cur.execute(sql,(a_name,description,date,prog_id))
+	# result = cur.fetchall()
+	con.commit()
+	con.close()
+	return "1"
 
 # @app.route("")
 
