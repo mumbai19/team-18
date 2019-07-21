@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ListView"></activity>
         <activity
             android:name=".AddRemoveStudent"
             android:label="@string/title_activity_add_remove_student"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AddSavings"
             android:label="@string/title_activity_add_savings"
