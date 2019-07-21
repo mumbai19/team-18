@@ -1,9 +1,8 @@
 package com.chandan.touchinglives;
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,28 +13,21 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
-import classes.CheckNetworkStatus;
-import classes.HttpJsonParser;
-
-public class MainActivity extends AppCompatActivity {
+public class    MainActivity extends AppCompatActivity {
 
     Button button_login;
     EditText login_id, password;
  // private static final String BASE_URL = "";
     ProgressDialog pDialog;
     private int success;
-String BASE_URL="http://52.77.233.40:5000/";
+String BASE_URL="http://52.77.233.40:5000";
 
 
     @Override
@@ -55,25 +47,66 @@ button_login.setOnClickListener(new View.OnClickListener() {
         String log_id = login_id.getText().toString();
         String pwd = password.getText().toString();
 
-        Map<String,String> map = new HashMap<>();
-        map.put("uid",log_id);
-        map.put("pwd",pwd);
-        HttpJsonParser httpJsonParser = new HttpJsonParser();
-        JSONObject jsonObject = httpJsonParser.makeHttpRequest(
-                BASE_URL+"program","POST",map);
-        /*if(success==0){
-
-            Toast.makeText(getApplicationContext(),"User registered successfully", Toast.LENGTH_SHORT).show();
+        HashMap<String, String> map = new HashMap<>();
+        map.put("uid", log_id);
+        map.put("pwd", pwd);
 
 
+//        JSONObject map = new JSONObject();
+//        try {
+//            map.put("uid",log_id);
+//            map.put("pwd",pwd);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+
+//        HttpJsonParser httpJsonParser = new HttpJsonParser();
+//        Log.e("a","Hi");
+//        JSONObject jsonObject = httpJsonParser.makeHttpRequest(
+//                BASE_URL,"POST",map);
+//        Log.e("a","Hi "+jsonObject);
+//    Log.e("a","s "+success);
+//        if(success==1) {
+//
+//            Toast.makeText(getApplicationContext(), "User registered successfully", Toast.LENGTH_SHORT).show();
+//
+//
+//        }
+//
+//
+//
+//
+//
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+        String url ="http://52.77.233.40:5000/login";
 
 
-        }*/
+// Request a string response from the provided URL.
+//        Log.e("a", ""+map.get("uid"));
+            JsonObjectRequest jor = new JsonObjectRequest(Request.Method.POST, url,new JSONObject(map),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.e("a"," "+response);
 
+                            Toast.makeText(getApplicationContext(), "User registered successfully", Toast.LENGTH_SHORT).show();
 
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Volley","Error "+ error);
 
+                    }
+                }
+        );
+        queue.add(jor);
 
     }
-});
+
+    });
 
     }}

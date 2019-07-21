@@ -49,7 +49,6 @@ private ArrayList<HashMap<String,String>>studentList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ListView listView = (ListView) findViewById(R.id.listView1);
 
         setContentView(R.layout.activity_add_attendance);
         //simpleList = (ListView)findViewById(R.id.listView1);
@@ -92,7 +91,21 @@ private ArrayList<HashMap<String,String>>studentList;
         try {
 
             map = jsonHelper.toMap(jsonObject);
+            ListView listView;
+            String[] SamsungPhones = new String[] { "Galaxy S", "Galaxy S2",
+                    "Galaxy Note", "Galaxy Beam", "Galaxy Ace Plus", "Galaxy S3",
+                    "Galaxy S Advance", "Galaxy Wave 3", "Galaxy Wave Y",
+                    "Galaxy Nexus", "Galaxy W", "Galaxy Y", "Galaxy Mini",
+                    "Galaxy Gio", "Galaxy Wave", "Galaxy Wave 2" };
 
+            // Locate ListView in listview_main.xml
+            listView = (ListView) findViewById(R.id.listView);
+
+            // Bind array strings into an adapter
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1, android.R.id.text1,
+                    SamsungPhones);
+            listView.setAdapter(adapter);
 
 
         } catch (JSONException e) {
