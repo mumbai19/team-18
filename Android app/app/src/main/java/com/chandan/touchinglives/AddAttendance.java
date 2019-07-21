@@ -52,7 +52,7 @@ Logger log=Logger.getLogger("AddAttendance");
    private ListView listView;
    private TextView textView;
    private String[] listItem;
-    private String LOCAL_URL= "http://a490268b.ngrok.io/getstudentdata";
+    private String LOCAL_URL= "http://52.77.233.40:5000/getstudentdata";
 private ArrayList<HashMap<String,String>>studentList;
 
     @Override

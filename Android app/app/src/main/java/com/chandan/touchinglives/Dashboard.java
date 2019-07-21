@@ -29,8 +29,8 @@ import java.util.Map;
 import classes.JsonHelper;
 
 public class Dashboard extends AppCompatActivity {
-    private String LOCAL_URL= "http://a490268b.ngrok.io/getstudentdata";
-    private CardView AddActivity,AddAttendance,AddSavings;
+    private String LOCAL_URL= "http://4fd3c";
+    private CardView AddActivity,AddAttendance,AddSavings,AddRem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +39,16 @@ public class Dashboard extends AppCompatActivity {
 AddActivity=findViewById(R.id.addActivity);
 AddAttendance=findViewById(R.id.addAttendance);
 AddSavings=findViewById(R.id.addSavings);
+        AddRem=findViewById(R.id.addDeleteStudent);
+
+        AddRem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i =new Intent(Dashboard.this,AddRemoveStudent.class);
+                startActivity(i);
+            }
+        });
 
         AddActivity.setOnClickListener(new View.OnClickListener() {
             @Override

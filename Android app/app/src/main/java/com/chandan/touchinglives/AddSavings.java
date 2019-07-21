@@ -34,7 +34,7 @@ public class AddSavings extends AppCompatActivity {
     ListView lvData;
     ArrayList<Student> sdata=new ArrayList<>();
     ArrayAdapter<Student> adapter;
-    private String LOCAL_URL= "http://a490268b.ngrok.io/getstudentdata";
+    private String LOCAL_URL= "http://52.77.233.40:5000/getstudentdata";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
