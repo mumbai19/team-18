@@ -13,7 +13,6 @@ db = "touching_lives"
 
 @app.route("/dept")
 def home():
-
 	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
 	cur = con.cursor()
 	print(str(cur))
@@ -21,7 +20,7 @@ def home():
 	result = cur.fetchall()
 	print(result)
 
-	return "hel"
+	return "Hello"
 
 @app.route('/')
 def my_form():
@@ -65,10 +64,10 @@ def addstudentdata():
 	cur = con.cursor()
 	content=request.get_json(force=True)
 	sql="INSERT INTO `student` (`s_name`,`prog_id`,`ph_no`,`doj`,`dol`,`present_status`) VALUES (%s,%s,%s,%s,%s,%s)";
-	val=(content['name'],int(content['program_id']),int(content['phone']),content['doj'],content['dol'],int(content['status']))
+	val=(content['name'],int(content['program_id']),int(content['phone']),content['doj'],content['dol'],1)
 	cur.execute(sql,val)
 	con.commit()
-	return "Hello"
+	return jsonify({"status":True})
 
 @app.route("/addattendance",methods=["POST"])
 def addattendance():
@@ -91,7 +90,7 @@ def addattendance():
 		cur.execute(sql,val)
 		con.commit()
 		
-	return "Hello"
+	return jsonify({"status":True})
 
 @app.route("/getattendance",methods=["GET"])
 def getattendance():
@@ -118,7 +117,22 @@ def addsavings():
 	con.commit()
 	return "Hello"
 
-app.run(debug=True)
+@app.route("/paysavings",methods=["POST"])
+def paysavings():
+	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
+	cur = con.cursor()
+	content=request.get_json(force=True)
+	# print(content['savings'])
+	list1=content['savings']
+	for elem in list1:
+		print(elem)
+		sql="update `savings` set `status`= 1 where `s_id`=%s"
+		val=(int(elem))
+		cur.execute(sql,val)
+	con.commit()
+	return "Hello"
+		 
+
 
 @app.route("/login",methods=["POST"])
 def login():
