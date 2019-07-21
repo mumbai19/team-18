@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,6 +30,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.logging.Logger;
+
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import classes.JsonHelper;
@@ -42,7 +45,7 @@ public class AddAttendance extends AppCompatActivity {
     ListView lvData;
     ArrayList<Student>sdata=new ArrayList<>();
     ArrayAdapter<Student> adapter;
-
+Logger log=Logger.getLogger("AddAttendance");
     private ListView studentListView;
 //private static final String key_roll="Roll";
     private static final String key_nmae="Name";
@@ -65,84 +68,65 @@ private ArrayList<HashMap<String,String>>studentList;
 
         //simpleList = (ListView)findViewById(R.id.listView1);
 
-          RequestQueue queue = Volley.newRequestQueue(this);
-        String url = LOCAL_URL;
-//retrieving from list
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        Toast.makeText(getBaseContext(),"Response is: "+ response,Toast.LENGTH_LONG).show();
-                        json(response);
+
+
+
+    }
+            public void json(String result) {
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject(result);
+                } catch (JSONException e) {
+                    Toast.makeText(getBaseContext(), "NO NO NO -- " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                }
+
+                Log.e("a",jsonObject.toString());
+                Map<String, Object> map = new HashMap();
+
+                JsonHelper jsonHelper = new JsonHelper();
+                try {
+
+                    map = jsonHelper.toMap(jsonObject);
+
+                    Iterator<Map.Entry<String, Object>> itr = map.entrySet().iterator();
+                    while (itr.hasNext()) {
+                        Map.Entry<String, Object> entry = itr.next();
+                        String roll_no = entry.getKey();
+                        String name = entry.getValue().toString();
+
+                        Student s = new Student();
+                        s.setRno(roll_no);
+                        s.setName(name);
+
+                        sdata.add(s);
+
+
+
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getBaseContext(),"That didn't work!" + error,Toast.LENGTH_LONG).show();
-            }
-        });
+
+                    adapter=new ArrayAdapter<Student>(AddAttendance.this,android.R.layout.simple_expandable_list_item_1,sdata);
+                    lvData.setAdapter(adapter);
+        //            for (int i=0;i<map.size();i++){
+        //
+        //                Student s=map.get;
+        //                sdata.add(s);
 
 
 
 
+                            // Locate ListView in listview_main.xml
 
-    }
-    public void json(String result) {
-        JSONObject jsonObject = null;
-        try {
-            jsonObject = new JSONObject(result);
-        } catch (JSONException e) {
-            Toast.makeText(getBaseContext(), "NO NO NO -- " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-        }
+                    // Bind array strings into an adapter
 
 
-        Map<String, Object> map = new HashMap();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-        JsonHelper jsonHelper = new JsonHelper();
-        try {
-
-            map = jsonHelper.toMap(jsonObject);
-
-            Iterator<Map.Entry<String, Object>> itr = map.entrySet().iterator();
-            while (itr.hasNext()) {
-                Map.Entry<String, Object> entry = itr.next();
-                String roll_no = entry.getKey();
-                String name = entry.getValue().toString();
-
-                Student s = new Student();
-                s.setRno(roll_no);
-                s.setName(name);
-
-                sdata.add(s);
-
-
+                Toast.makeText(getBaseContext(), map.get("1").toString(),Toast.LENGTH_LONG).show();
+                  //  studentList.add((HashMap<String, String>) newmap);
 
             }
-
-            adapter=new ArrayAdapter<Student>(AddAttendance.this,android.R.layout.simple_expandable_list_item_1,sdata);
-            lvData.setAdapter(adapter);
-//            for (int i=0;i<map.size();i++){
-//
-//                Student s=map.get;
-//                sdata.add(s);
-
-
-
-
-                    // Locate ListView in listview_main.xml
-
-            // Bind array strings into an adapter
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        Toast.makeText(getBaseContext(), map.get("1").toString(),Toast.LENGTH_LONG).show();
-          //  studentList.add((HashMap<String, String>) newmap);
-
-    }
 
 
         //simpleList = (ListView)findViewById(R.id.listView1);
