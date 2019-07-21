@@ -36,6 +36,31 @@ def add_user():
 	cur.execute("INSERT into user values('password' ,'prog_id')")
 	cur.close()
 
+@app.route('/', methods=['POST'])
+
+def add_student():
+	s_name = request.form['s_name']
+	prog_id= request.form['prog_id']
+	ph_no= request.form['ph_no']
+	doj= request.form['doj']
+	dol= request.form['dol']
+
+	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
+	cur = con.cursor()
+
+	
+	cur.execute("INSERT into student values('s_name' ,'prog_id','ph_no','doj','dol,'1')")
+	cur.commit()
+	cur.close()
+
+
+def get_student_data():
+
+	con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.DictCursor)
+	cur = con.cursor()
+
+	cur.execute("SELECT s_name,ph_no,doj,prog_id FROM student")
+	result = cur.fetchall()
 
 
 @app.route("/program",methods=["GET"])
