@@ -63,7 +63,7 @@ AddSavings=findViewById(R.id.addSavings);
                             public void onResponse(String response) {
                                 Log.e("a","++++++++++++");
                                 // Display the first 500 characters of the response string.
-                                Toast.makeText(getBaseContext(),"Response is: "+ response,Toast.LENGTH_LONG).show();
+          //                      Toast.makeText(getBaseContext(),"Response is: "+ response,Toast.LENGTH_LONG).show();
                                 json(response);
                             }
                         }, new Response.ErrorListener() {
@@ -119,7 +119,7 @@ queue.add(stringRequest);
             e.printStackTrace();
         }
 
-        Toast.makeText(getBaseContext(), map.get("1").toString(),Toast.LENGTH_LONG).show();
+        //Toast.makeText(getBaseContext(), map.get("1").toString(),Toast.LENGTH_LONG).show();
         //  studentList.add((HashMap<String, String>) newmap);
 
     }

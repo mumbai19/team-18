@@ -52,7 +52,7 @@ Logger log=Logger.getLogger("AddAttendance");
    private ListView listView;
    private TextView textView;
    private String[] listItem;
-    private String LOCAL_URL= "http://a490268b.ngrok.io/studentdata";
+    private String LOCAL_URL= "http://a490268b.ngrok.io/getstudentdata";
 private ArrayList<HashMap<String,String>>studentList;
 
     @Override
@@ -142,7 +142,7 @@ private ArrayList<HashMap<String,String>>studentList;
             e.printStackTrace();
         }
 
-        Toast.makeText(getBaseContext(), map.get("1").toString(),Toast.LENGTH_LONG).show();
+      //  Toast.makeText(getBaseContext(), map.get("1").toString(),Toast.LENGTH_LONG).show();
           //  studentList.add((HashMap<String, String>) newmap);
 
     }

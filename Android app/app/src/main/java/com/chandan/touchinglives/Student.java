@@ -11,8 +11,8 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Rno= " + rno +
-                " Name= " + name + "\n" ;
+        return "Roll No : " + rno +
+                "   Name : " + name + "\n" ;
     }
 
     public Student(String rno, String name) {
