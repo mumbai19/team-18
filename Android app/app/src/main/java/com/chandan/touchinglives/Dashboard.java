@@ -29,7 +29,7 @@ import java.util.Map;
 import classes.JsonHelper;
 
 public class Dashboard extends AppCompatActivity {
-    private String LOCAL_URL= "http://4fd3c";
+    private String LOCAL_URL= "http://";
     private CardView AddActivity,AddAttendance,AddSavings,AddRem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
